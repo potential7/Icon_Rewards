@@ -1,0 +1,45 @@
+<%- include('includes/head'); -%>
+
+
+<body class="sign-body">
+  <%- include('includes/header home'); -%>
+
+
+  <main class=" m-5 ">
+    <% if(errors !=null && errors.length> 0){ %>
+
+    <% for (var i=0; i < errors.length; i++) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= errors[i] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+    <% } %>
+
+
+    <div class="container-lg p-5 rounded-4 m-auto signin">
+      <h1 class="text-white">LOGIN
+      </h1>
+      <form method="post" action="/signin">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <input class="btn btn-lg main-color my-2 w-100" type="submit">
+        <p class="text-white"> Don't have an Account?<a class=" text-white" href="/signup"> Sign Up</a></p>
+
+      </form>
+
+    </div>
+  </main>
+
+  <%- include('includes/footer'); -%>
+
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<%- include('../includes/head admin.ejs') %>
+<body>
+    <%- include('../includes/header admin.ejs') %>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../includes/sidebar.ejs') %>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">View transactions</h1>
+      </div>
+      <% if(errors !=null && errors.length> 0){ %>
+
+        <% for (var i=0; i < errors.length; i++) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= errors[i] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+    
+    
+        <% if(success !=null && success.length> 0){ %>
+    
+        <% for (var i=0; i < success.length; i++) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= success[i] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+      <table class="table table-hover table-responsive-sm">
+        <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">Shop Location</th>
+        <th scope="col">Shopping Amount</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for( let i = 0; i < rewards.length; i++ ) { %>
+      
+        
+          <tr>
+        <form method="post" action="/admin/delete-reward">
+        <th scope="row"><%= i+1 %> </th>
+        <input hidden name="id" value="<%= rewards[i].id %> ">
+        <td><a href="/admin/view-product/<%= rewards[i].id %>"><%= rewards[i].userId?.email %> </a></td>
+        <td><%= rewards[i]?.shopLocation %></td>
+        <td><%= rewards[i]?.shoppingAmount %></td>
+        <td><%= rewards[i]?.discounts %></td>        
+        <td><%= rewards[i]?.date.toLocaleString() %></td>
+        <td><button class="btn btn-danger"> Delete</button></td>
+      
+      </form>
+      </tr>
+    
+      <% } %>
+    </tbody>
+  
+    </table>
+
+
+    </main>
+  </div>
+</div>
+
+<%- include('../includes/footer.ejs') %>
+
+  </body>
+</html>
+
