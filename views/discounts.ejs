@@ -1,0 +1,38 @@
+<%- include('includes/head'); -%>
+<body>
+    <%- include('includes/header'); -%>
+    
+
+    <div class="list-group w-auto p-5 m-2">
+        <div class="main-color text-center p-2 pt-3">
+            <h3 class="text-center">Rewards History</h3>
+            <p> Your current Reward Balance is</p>
+            <h1> &#8358;<%= totalAmount %> </h1>
+        </div>
+        <% for( let i = 0; i < rewards.length; i++ ) { %>
+    
+        <a href="/dashboard/rewards/<%= rewards[i].id %>" class="list-group-item list-group-item-action d-flex gap-3 py-3 rounded-0" aria-current="true">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                    <h6 class="mb-0"><%= rewards[i].shopLocation %></h6>
+                    <p class="mb-0 opacity-75">Shopping Amount</p>
+                    <p class="mb-0 opacity-75">Reward Points Earned</p>
+                    <small class="mb-0 opacity-75 mainColor"><%= rewards[i].date.toLocaleString() %></small>
+                </div>
+                <div>
+                    <p class="opacity-50 text-nowrap d-block my-1 mt-3">&#8358;<%= rewards[i].shoppingAmount %></p>
+                    <p class="opacity-50 text-nowrap d-block">&#8358;<%= rewards[i].discounts %> </p>
+                </div>
+
+            </div>
+        </a>
+        <% } %>
+    </div>
+
+
+    <%- include('includes/footer'); -%>
+
+
+</body>
+
+</html>

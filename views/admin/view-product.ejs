@@ -1,0 +1,70 @@
+<%- include('../includes/head admin.ejs') %>
+<body>
+    <%- include('../includes/header admin.ejs') %>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../includes/sidebar.ejs') %>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">View transactions</h1>
+      </div>
+      <% if(errors !=null && errors.length> 0){ %>
+
+        <% for (var i=0; i < errors.length; i++) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= errors[i] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+    
+    
+        <% if(success !=null && success.length> 0){ %>
+    
+        <% for (var i=0; i < success.length; i++) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= success[i] %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% } %>
+      <table class="table table-hover table-responsive-sm">
+        <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">item</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Discount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for( let i = 0; i < product.length; i++ ) { %>
+      
+      <tr>
+        <form method="post" action="/admin/delete-reward">
+        <th scope="row"><%= i+1 %> </th>
+        <td><%= product[i]?.item %> </td>
+        <td><%= product[i]?.qty %></td>
+        <td><%= product[i]?.amount %></td>
+        <td><%= product[i]?.discount %></td>
+      </form>
+      </tr>
+      <% } %>
+    </tbody>
+  
+    </table>
+
+
+    </main>
+  </div>
+</div>
+
+<%- include('../includes/footer.ejs') %>
+
+  </body>
+</html>
+

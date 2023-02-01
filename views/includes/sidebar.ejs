@@ -1,0 +1,36 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link <%= active === 'dashboard' ? 'active' : '' %> " aria-current="page" href="/admin/dashboard">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= active === 'add' ? 'active' : '' %> " href="/admin/grant-reward">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Add transaction 
+            
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= active === 'view' ? 'active' : '' %> " href="/admin/view-reward">
+                    <span data-feather="users" class="align-text-bottom"></span>
+                    View transactions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= active === 'user' ? 'active' : '' %> " href="/admin/get-users">
+                    <span data-feather="layers" class="align-text-bottom"></span>
+                    View user
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <%= active === 'password' ? 'active' : '' %> " href="/admin/changepassword">
+                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                    Change password
+                </a>
+            </li>
+        </ul>
+</nav>
