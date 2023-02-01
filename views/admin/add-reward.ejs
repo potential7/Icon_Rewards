@@ -1,0 +1,64 @@
+<%- include('../includes/head admin.ejs') %>
+<body>
+    <%- include('../includes/header admin.ejs') %>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../includes/sidebar.ejs') %>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Add transaction</h1>
+                </div>
+                <% if(errors !=null && errors.length> 0){ %>
+
+                    <% for (var i=0; i < errors.length; i++) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <%= errors[i] %>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+                    <% } %>
+                
+                
+                    <% if(success !=null && success.length> 0){ %>
+                
+                    <% for (var i=0; i < success.length; i++) { %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <%= success[i] %>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+                    <% } %>
+                <div>
+                    <form method="post" action="/admin/grant-reward">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address of customer</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                                name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="shop" class="form-label">Shop location</label>
+                            <input type="text" class="form-control" id="shop" placeholder="shop location"
+                                name="shopLocation">
+                        </div>
+
+                        <button class="btn btn-lg btn-primary">Add</button>
+                    </form>
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+
+
+    <%- include('../includes/footer.ejs') %>
+
+
+</body>
+
+</html>
